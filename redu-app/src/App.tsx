@@ -1,17 +1,21 @@
-import  { useSelector, useDispatch} from 'react-redux'
+import  { useDispatch } from 'react-redux'
+import { increment, incrementAmount } from './Features/Counter/counter-slice';
+import { useAppSelector } from './hooks';
 
 function App() {
  
-const count:any =  useSelector<any>(state => state.counter.value)
-const dispatch = useDispatch();
+const count =  useAppSelector(state => state.counter.value)
+const dispatch = useDispatch(); 
 
   function handleClick(){
     //increment();
-    dispatch({type: 'counter/increment'})
+    //dispatch({type: 'counter/increment'})
+    dispatch(increment())
   }
   function handleClickAmount(){
-    //ncrementAmount(5);
-    dispatch({type: 'counter/incrementAmount', payload: 5})
+    //incrementAmount(5);
+    //dispatch({type: 'counter/incrementAmount', payload: 5})
+    dispatch(incrementAmount(5))
   }
   
   return (
